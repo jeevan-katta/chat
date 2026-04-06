@@ -5,6 +5,8 @@ import { Send, Phone, Video, Mic } from 'lucide-react';
 import { socket } from '../pages/ChatDashboard';
 import api from '../store/authStore'; // generic axios
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+
 function ChatWindow() {
   const { selectedChat, messages, fetchMessages, sendMessage, addMessage, removeMessage, onlineUsers } = useChatStore();
   const user = useAuthStore(state => state.user);
@@ -197,7 +199,7 @@ function ChatWindow() {
               <div className="bubble" style={m.isAudio ? { padding: '8px', background: 'transparent' } : {}}>
                 {m.isAudio ? (
                   <audio 
-                     src={`http://localhost:5000${m.content}`} 
+                     src={`${BACKEND_URL}${m.content}`} 
                      controls 
                      controlsList="nodownload"
                      onPlay={(e) => {

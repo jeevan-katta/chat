@@ -1,8 +1,10 @@
 import { create } from 'zustand';
 import axios from 'axios';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Make sure proxy isn't needed if full url provided, but CORS must match
+  baseURL: `${BACKEND_URL}/api`, // dynamic production host or local
   withCredentials: true,
 });
 

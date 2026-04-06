@@ -6,7 +6,7 @@ import { useAuthStore } from '../store/authStore';
 import { useChatStore } from '../store/chatStore';
 import { io } from 'socket.io-client';
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 export const socket = io(ENDPOINT, { autoConnect: false });
 
 function ChatDashboard() {
